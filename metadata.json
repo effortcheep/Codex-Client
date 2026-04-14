@@ -1,0 +1,6 @@
+{
+  "name": "Codex Client",
+  "description": "An AI-powered code editor client interface similar to Codex/Cursor, built with HeroUI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
