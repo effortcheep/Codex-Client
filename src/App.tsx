@@ -65,7 +65,7 @@ const mockFiles = [
 ];
 
 export default function App() {
-  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>('dark');
+  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>('light');
   const [projects, setProjects] = useState(initialProjects);
   const [activeChatId, setActiveChatId] = useState('c1');
   const [chatInput, setChatInput] = useState('');
@@ -137,76 +137,76 @@ export default function App() {
         {leftSidebarOpen && (
           <motion.div 
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 288, opacity: 1 }}
+            animate={{ width: 240, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="flex-shrink-0 bg-gray-50/50 dark:bg-[#111111] flex flex-col overflow-hidden border-r border-gray-200 dark:border-white/5"
           >
             {/* Sidebar Header - Static Menus */}
-            <div className="p-4 flex flex-col gap-1 border-b border-gray-100 dark:border-white/5">
-              <div className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-xl cursor-pointer transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white group">
-                <Search size={18} className="group-hover:text-blue-500 transition-colors" />
-                <span className="text-sm font-medium">Search Projects</span>
+            <div className="p-3 flex flex-col gap-0.5 border-b border-gray-100 dark:border-white/5">
+              <div className="flex items-center gap-2.5 px-2.5 py-1.5 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg cursor-pointer transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white group">
+                <Search size={16} className="group-hover:text-blue-500 transition-colors" />
+                <span className="text-sm font-medium">Search</span>
               </div>
-              <div className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-xl cursor-pointer transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white group">
-                <Sparkles size={18} className="group-hover:text-purple-500 transition-colors" />
-                <span className="text-sm font-medium">Skills & Applications</span>
+              <div className="flex items-center gap-2.5 px-2.5 py-1.5 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg cursor-pointer transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white group">
+                <Sparkles size={16} className="group-hover:text-purple-500 transition-colors" />
+                <span className="text-sm font-medium">Skills</span>
               </div>
-              <div className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-xl cursor-pointer transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white group">
-                <Cpu size={18} className="group-hover:text-green-500 transition-colors" />
+              <div className="flex items-center gap-2.5 px-2.5 py-1.5 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg cursor-pointer transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white group">
+                <Cpu size={16} className="group-hover:text-green-500 transition-colors" />
                 <span className="text-sm font-medium">Automation</span>
               </div>
             </div>
 
             {/* Projects Section Header */}
-            <div className="px-4 py-3 flex items-center justify-between">
-              <span className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Projects</span>
-              <div className="flex items-center gap-1">
-                <Button isIconOnly size="sm" variant="ghost" className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white min-w-0 w-8 h-8 rounded-lg">
-                  <ListFilter size={16} />
+            <div className="px-3 py-2 flex items-center justify-between">
+              <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">Projects</span>
+              <div className="flex items-center gap-0.5">
+                <Button isIconOnly size="sm" variant="ghost" className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white min-w-0 w-7 h-7 rounded-md">
+                  <ListFilter size={14} />
                 </Button>
-                <Button isIconOnly size="sm" variant="ghost" className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white min-w-0 w-8 h-8 rounded-lg">
-                  <Plus size={16} />
+                <Button isIconOnly size="sm" variant="ghost" className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white min-w-0 w-7 h-7 rounded-md">
+                  <Plus size={14} />
                 </Button>
               </div>
             </div>
 
             {/* Sidebar Content - Categorized Projects */}
-            <ScrollShadow className="flex-1 px-2 pb-4">
-              <div className="flex flex-col gap-6">
+            <ScrollShadow className="flex-1 px-1.5 pb-2">
+              <div className="flex flex-col gap-4">
                 {['Default', 'Web Apps', 'Internal Tools'].map(cat => (
-                  <div key={cat} className="flex flex-col gap-1">
-                    <div className="px-3 py-1 text-[10px] font-bold text-gray-400 dark:text-gray-600 uppercase tracking-widest mb-1">
+                  <div key={cat} className="flex flex-col gap-0.5">
+                    <div className="px-2.5 py-1 text-[9px] font-bold text-gray-400 dark:text-gray-600 uppercase tracking-widest mb-0.5">
                       {cat}
                     </div>
                     {projects.filter(p => p.category === cat).map(project => (
-                      <div key={project.id} className="flex flex-col gap-1">
+                      <div key={project.id} className="flex flex-col gap-0.5">
                         <div 
-                          className="flex items-center justify-between px-3 py-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-xl cursor-pointer group transition-colors"
+                          className="flex items-center justify-between px-2.5 py-1.5 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg cursor-pointer group transition-colors"
                           onClick={() => toggleProject(project.id)}
                         >
-                          <div className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
-                            {project.isOpen ? <ChevronDown size={14} className="text-gray-400 dark:text-gray-500" /> : <ChevronRight size={14} className="text-gray-400 dark:text-gray-500" />}
-                            <Folder size={16} className="text-blue-500/70 dark:text-blue-400/80 group-hover:text-blue-500 dark:group-hover:text-blue-400" />
+                          <div className="flex items-center gap-2 text-[13px] font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
+                            {project.isOpen ? <ChevronDown size={12} className="text-gray-400 dark:text-gray-500" /> : <ChevronRight size={12} className="text-gray-400 dark:text-gray-500" />}
+                            <Folder size={14} className="text-blue-500/70 dark:text-blue-400/80 group-hover:text-blue-500 dark:group-hover:text-blue-400" />
                             <span className="truncate">{project.name}</span>
                           </div>
                         </div>
 
                         {project.isOpen && (
-                          <div className="flex flex-col gap-0.5 pl-8 pr-2">
+                          <div className="flex flex-col gap-0.5 pl-6 pr-1.5">
                             {project.chats.map(chat => {
                               const isActive = activeChatId === chat.id;
                               return (
                                 <div 
                                   key={chat.id}
                                   onClick={() => setActiveChatId(chat.id)}
-                                  className={`flex items-center gap-2 px-3 py-2 rounded-xl cursor-pointer text-sm transition-all duration-200 ${
+                                  className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg cursor-pointer text-[13px] transition-all duration-200 ${
                                     isActive 
                                       ? 'bg-gray-200/50 dark:bg-blue-500/10 text-gray-900 dark:text-blue-400 font-semibold' 
                                       : 'text-gray-500 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-gray-300'
                                   }`}
                                 >
-                                  <MessageSquare size={14} className={isActive ? "text-blue-500 dark:text-blue-400" : "text-gray-400 dark:text-gray-500"} />
+                                  <MessageSquare size={12} className={isActive ? "text-blue-500 dark:text-blue-400" : "text-gray-400 dark:text-gray-500"} />
                                   <span className="truncate">{chat.title}</span>
                                 </div>
                               );
@@ -221,18 +221,18 @@ export default function App() {
             </ScrollShadow>
 
             {/* User Settings Area with Popover */}
-            <div className="p-4 border-t border-gray-100 dark:border-white/5">
+            <div className="p-3 border-t border-gray-100 dark:border-white/5">
               <PopoverRoot placement="top-start">
                 <PopoverTrigger>
-                  <div className="flex items-center gap-3 px-3 py-2.5 hover:bg-gray-100 dark:hover:bg-white/5 rounded-2xl cursor-pointer transition-all active:scale-[0.98] group">
-                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-purple-500/10 group-hover:shadow-purple-500/20 transition-all">
+                  <div className="flex items-center gap-2.5 px-2 py-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-xl cursor-pointer transition-all active:scale-[0.98] group">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-purple-500/10 group-hover:shadow-purple-500/20 transition-all">
                       U
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 truncate">User Account</div>
-                      <div className="text-[11px] text-gray-400 dark:text-gray-500 truncate font-medium">effortcheep@gmail.com</div>
+                      <div className="text-xs font-semibold text-gray-800 dark:text-gray-200 truncate">User Account</div>
+                      <div className="text-[10px] text-gray-400 dark:text-gray-500 truncate font-medium">effortcheep@gmail.com</div>
                     </div>
-                    <Settings size={18} className="text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
+                    <Settings size={16} className="text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" />
                   </div>
                 </PopoverTrigger>
                 <PopoverContent className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 p-2 rounded-2xl shadow-2xl min-w-[240px]">
@@ -297,57 +297,47 @@ export default function App() {
       {/* Main Chat Area */}
       <div className="flex-1 flex flex-col bg-white dark:bg-[#0a0a0a] relative overflow-hidden transition-colors duration-300">
         {/* Chat Header */}
-        <div className="h-14 flex items-center justify-between px-6 border-b border-gray-100 dark:border-white/5 bg-white dark:bg-[#0e0e0e] z-10">
-          <div className="flex items-center gap-4">
-            <Tooltip>
-              <Tooltip.Trigger>
-                <Button 
-                  isIconOnly 
-                  variant="ghost" 
-                  size="sm" 
-                  className={`text-gray-400 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white min-w-0 w-9 h-9 rounded-xl transition-all flex items-center justify-center ${leftSidebarOpen ? 'bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white' : ''}`}
-                  onClick={() => setLeftSidebarOpen(!leftSidebarOpen)}
-                >
-                  <PanelLeft size={18} />
-                </Button>
-              </Tooltip.Trigger>
-              <Tooltip.Content>{leftSidebarOpen ? 'Close sidebar' : 'Open sidebar'}</Tooltip.Content>
-            </Tooltip>
-            <div className="flex items-center gap-3">
-              <Hash size={18} className="text-gray-400 dark:text-gray-500" />
-              <span className="font-bold text-gray-800 dark:text-gray-100">{activeChatTitle}</span>
+        <div className="h-12 flex items-center justify-between px-4 border-b border-gray-100 dark:border-white/5 bg-white dark:bg-[#0e0e0e] z-10">
+          <div className="flex items-center gap-2">
+            <Button 
+              isIconOnly 
+              variant="ghost" 
+              size="sm" 
+              className={`text-gray-400 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white min-w-0 w-8 h-8 rounded-lg transition-all flex items-center justify-center ${leftSidebarOpen ? 'bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white' : ''}`}
+              onClick={() => setLeftSidebarOpen(!leftSidebarOpen)}
+            >
+              <PanelLeft size={16} />
+            </Button>
+            <div className="flex items-center gap-2 ml-1">
+              <Hash size={16} className="text-gray-400 dark:text-gray-500" />
+              <span className="text-sm font-bold text-gray-800 dark:text-gray-100 tracking-tight">{activeChatTitle}</span>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Tooltip>
-              <Tooltip.Trigger>
-                <Button 
-                  isIconOnly 
-                  variant="ghost" 
-                  size="sm" 
-                  className={`text-gray-400 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white min-w-0 w-9 h-9 rounded-xl transition-all flex items-center justify-center ${rightPanelOpen ? 'bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white' : ''}`}
-                  onClick={() => setRightPanelOpen(!rightPanelOpen)}
-                >
-                  <PanelRight size={18} />
-                </Button>
-              </Tooltip.Trigger>
-              <Tooltip.Content>Toggle side panel</Tooltip.Content>
-            </Tooltip>
+          <div className="flex items-center gap-1.5">
+            <Button 
+              isIconOnly 
+              variant="ghost" 
+              size="sm" 
+              className={`text-gray-400 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white min-w-0 w-8 h-8 rounded-lg transition-all flex items-center justify-center ${rightPanelOpen ? 'bg-gray-100 dark:bg-white/10 text-gray-900 dark:text-white' : ''}`}
+              onClick={() => setRightPanelOpen(!rightPanelOpen)}
+            >
+              <PanelRight size={16} />
+            </Button>
           </div>
         </div>
 
         {/* Messages Area */}
-        <ScrollShadow className="flex-1 p-6">
-          <div className="max-w-4xl mx-auto flex flex-col gap-6 pb-4">
+        <ScrollShadow className="flex-1 p-4">
+          <div className="max-w-3xl mx-auto flex flex-col gap-4 pb-2">
             {messages.map((msg, idx) => {
               const isAssistant = msg.role === 'assistant';
               return (
                 <div key={idx} className={`flex ${isAssistant ? 'justify-start' : 'justify-end'}`}>
-                  <div className={`max-w-[85%] flex flex-col ${isAssistant ? 'items-start w-full' : 'items-end'}`}>
-                    <div className={`text-[15px] leading-relaxed whitespace-pre-wrap px-4 py-3 rounded-2xl transition-colors duration-200 ${
+                  <div className={`max-w-[90%] flex flex-col ${isAssistant ? 'items-start w-full' : 'items-end'}`}>
+                    <div className={`text-[14px] leading-relaxed whitespace-pre-wrap px-3 py-2 rounded-xl transition-colors duration-200 ${
                       isAssistant 
                         ? 'bg-transparent text-gray-800 dark:text-gray-200 w-full text-left' 
-                        : 'bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-white/5'
+                        : 'bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-white/5 shadow-sm'
                     }`}>
                       {msg.content}
                     </div>
@@ -360,9 +350,9 @@ export default function App() {
         </ScrollShadow>
 
         {/* Input Area */}
-        <div className="p-6 pt-0">
-          <div className="max-w-3xl mx-auto flex flex-col gap-3">
-            <div className="relative bg-gray-50 dark:bg-[#141414] rounded-2xl border border-gray-200 dark:border-white/10 flex flex-col shadow-sm dark:shadow-lg transition-all focus-within:border-blue-500/50 dark:focus-within:border-white/20">
+        <div className="p-3 pt-0">
+          <div className="max-w-3xl mx-auto flex flex-col gap-2">
+            <div className="relative bg-gray-50 dark:bg-[#141414] rounded-xl border border-gray-200 dark:border-white/10 flex flex-col shadow-sm transition-all focus-within:border-blue-500/30">
               <textarea 
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
@@ -373,29 +363,29 @@ export default function App() {
                   }
                 }}
                 placeholder="Message Codex..."
-                className="w-full bg-transparent text-[15px] text-gray-800 dark:text-gray-200 p-4 outline-none resize-none min-h-[100px] max-h-[300px]"
+                className="w-full bg-transparent text-[14px] text-gray-800 dark:text-gray-200 p-3 outline-none resize-none min-h-[80px] max-h-[200px]"
               />
-              <div className="flex items-center justify-between p-3 border-t border-gray-100 dark:border-white/5">
-                <div className="flex items-center gap-2">
+              <div className="flex items-center justify-between p-2 border-t border-gray-100 dark:border-white/5">
+                <div className="flex items-center gap-1.5">
                   <Tooltip content="Attach File" placement="top" showArrow closeDelay={0}>
-                    <Button isIconOnly size="sm" variant="ghost" className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white border-none h-8 w-8 min-w-0 rounded-lg">
-                      <Plus size={18} />
+                    <Button isIconOnly size="sm" variant="ghost" className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white border-none h-7 w-7 min-w-0 rounded-md">
+                      <Plus size={16} />
                     </Button>
                   </Tooltip>
 
-                  <div className="h-4 w-[1px] bg-gray-200 dark:bg-white/10 mx-1" />
+                  <div className="h-3 w-[1px] bg-gray-200 dark:bg-white/10 mx-0.5" />
 
                   {/* Model Selection via Popover in Input Area */}
                   <div className="flex items-center gap-1">
                     <PopoverRoot placement="top-start">
                       <PopoverTriggerWrapper>
-                        <div className="flex items-center gap-2 px-3 py-1 hover:bg-gray-200 dark:hover:bg-white/5 rounded-xl cursor-pointer transition-colors group">
-                          <Sparkles size={14} className="text-blue-600 dark:text-blue-400" />
-                          <span className="text-xs font-bold text-gray-500 dark:text-gray-500 group-hover:text-gray-800 dark:group-hover:text-gray-300">{selectedModel}</span>
-                          <ChevronDown size={12} className="text-gray-400 dark:text-gray-600 group-hover:text-gray-600 dark:group-hover:text-gray-400" />
+                        <div className="flex items-center gap-1.5 px-2 py-1 hover:bg-gray-200 dark:hover:bg-white/5 rounded-lg cursor-pointer transition-colors group">
+                          <Sparkles size={12} className="text-blue-600 dark:text-blue-400" />
+                          <span className="text-[11px] font-bold text-gray-500 group-hover:text-gray-800 dark:group-hover:text-gray-300">{selectedModel}</span>
+                          <ChevronDown size={10} className="text-gray-400 group-hover:text-gray-600" />
                         </div>
                       </PopoverTriggerWrapper>
-                      <PopoverContentWrapper className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 p-1 rounded-xl shadow-2xl min-w-[180px]">
+                      <PopoverContentWrapper className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 p-1 rounded-xl shadow-2xl min-w-[160px]">
                         <div className="flex flex-col gap-0.5">
                           {[
                             { id: 'Codex-4-Turbo', label: 'Codex-4-Turbo' },
@@ -405,76 +395,49 @@ export default function App() {
                             <div 
                               key={model.id}
                               onClick={() => setSelectedModel(model.id)}
-                              className="px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg flex items-center justify-between group cursor-pointer"
+                              className="px-2.5 py-1.5 text-xs text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg flex items-center justify-between group cursor-pointer"
                             >
                               <span className="font-medium">{model.label}</span>
-                              {selectedModel === model.id && <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]" />}
+                              {selectedModel === model.id && <div className="w-1 h-1 rounded-full bg-blue-500" />}
                             </div>
                           ))}
                         </div>
                       </PopoverContentWrapper>
                     </PopoverRoot>
 
-                    <div className="h-4 w-[1px] bg-gray-200 dark:bg-white/10 mx-1" />
+                    <div className="h-3 w-[1px] bg-gray-200 dark:bg-white/10 mx-0.5" />
                     
                     {/* Stats Indicators */}
-                    <div className="flex items-center gap-0.5 ml-1">
+                    <div className="flex items-center gap-0.5 ml-0.5">
                       {/* Skills */}
                       <PopoverRoot placement="top" showArrow>
                         <PopoverTriggerWrapper>
-                          <Button variant="light" className="h-auto min-w-0 p-1 flex items-center gap-1 hover:bg-gray-200 dark:hover:bg-white/5 rounded-lg transition-colors group cursor-pointer">
-                            <Zap size={13} className="text-amber-500" />
-                            <span className="text-[11px] font-bold text-gray-500 dark:text-gray-500 group-hover:text-gray-800 dark:group-hover:text-gray-300">12</span>
+                          <Button variant="light" className="h-auto min-w-0 p-1 flex items-center gap-1 hover:bg-gray-200 dark:hover:bg-white/5 rounded-md transition-colors group cursor-pointer">
+                            <Zap size={12} className="text-amber-500" />
+                            <span className="text-[10px] font-bold text-gray-500 group-hover:text-gray-800 dark:group-hover:text-gray-300">12</span>
                           </Button>
                         </PopoverTriggerWrapper>
                         <PopoverContentWrapper className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 p-0 rounded-xl shadow-2xl">
-                          <div className="p-3 min-w-[220px]">
-                            <div className="flex flex-col gap-3">
+                          <div className="p-2.5 min-w-[200px]">
+                            <div className="flex flex-col gap-2">
                               <div className="flex items-center justify-between">
-                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Active Skills</span>
-                                <span className="text-[10px] font-bold text-amber-500">12/20</span>
+                                <span className="text-[9px] font-bold text-gray-400 uppercase tracking-wider">Skills</span>
+                                <span className="text-[9px] font-bold text-amber-500">12/20</span>
                               </div>
-                              
-                              <div className="space-y-3">
+                              <div className="space-y-2">
                                 <div>
-                                  <div className="text-[9px] font-bold text-gray-400 uppercase mb-1.5 flex items-center gap-1">
-                                    <div className="w-1 h-[1px] bg-gray-300 dark:bg-white/10 flex-1" />
-                                    <span>Global</span>
-                                    <div className="w-1 h-[1px] bg-gray-300 dark:bg-white/10 flex-1" />
-                                  </div>
-                                  <div className="flex flex-col gap-1">
+                                  <div className="flex flex-col gap-0.5">
                                     {[
-                                      { name: 'Web Search' },
-                                      { name: 'Python Interpreter' },
-                                      { name: 'DALL-E 3' }
+                                      { name: 'Web Search', scope: 'GLB' },
+                                      { name: 'Python', scope: 'GLB' },
+                                      { name: 'File Search', scope: 'PRJ' }
                                     ].map(skill => (
-                                      <div key={skill.name} className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-300 px-1">
-                                        <div className="flex items-center gap-2">
+                                      <div key={skill.name} className="flex items-center justify-between text-[11px] text-gray-600 dark:text-gray-300 px-1">
+                                        <div className="flex items-center gap-1.5">
                                           <div className="w-1 h-1 rounded-full bg-amber-500" />
                                           {skill.name}
                                         </div>
-                                        <Chip size="sm" variant="soft" color="default" className="h-4 text-[8px] font-bold px-1 min-w-0">GLB</Chip>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-
-                                <div>
-                                  <div className="text-[9px] font-bold text-gray-400 uppercase mb-1.5 flex items-center gap-1">
-                                    <div className="w-1 h-[1px] bg-gray-300 dark:bg-white/10 flex-1" />
-                                    <span>Project</span>
-                                    <div className="w-1 h-[1px] bg-gray-300 dark:bg-white/10 flex-1" />
-                                  </div>
-                                  <div className="flex flex-col gap-1">
-                                    {[
-                                      { name: 'File Search' }
-                                    ].map(skill => (
-                                      <div key={skill.name} className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-300 px-1">
-                                        <div className="flex items-center gap-2">
-                                          <div className="w-1 h-1 rounded-full bg-amber-500" />
-                                          {skill.name}
-                                        </div>
-                                        <Chip size="sm" variant="soft" color="accent" className="h-4 text-[8px] font-bold px-1 min-w-0">PRJ</Chip>
+                                        <span className="text-[8px] font-bold text-gray-400">{skill.scope}</span>
                                       </div>
                                     ))}
                                   </div>
@@ -488,64 +451,31 @@ export default function App() {
                       {/* MCP */}
                       <PopoverRoot placement="top" showArrow>
                         <PopoverTriggerWrapper>
-                          <Button variant="light" className="h-auto min-w-0 p-1 flex items-center gap-1 hover:bg-gray-200 dark:hover:bg-white/5 rounded-lg transition-colors group cursor-pointer">
-                            <Puzzle size={13} className="text-purple-500" />
-                            <span className="text-[11px] font-bold text-gray-500 dark:text-gray-500 group-hover:text-gray-800 dark:group-hover:text-gray-300">5</span>
+                          <Button variant="light" className="h-auto min-w-0 p-1 flex items-center gap-1 hover:bg-gray-200 dark:hover:bg-white/5 rounded-md transition-colors group cursor-pointer">
+                            <Puzzle size={12} className="text-purple-500" />
+                            <span className="text-[10px] font-bold text-gray-500 group-hover:text-gray-800 dark:group-hover:text-gray-300">5</span>
                           </Button>
                         </PopoverTriggerWrapper>
                         <PopoverContentWrapper className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 p-0 rounded-xl shadow-2xl">
-                          <div className="p-3 min-w-[220px]">
-                            <div className="flex flex-col gap-3">
+                          <div className="p-2.5 min-w-[200px]">
+                            <div className="flex flex-col gap-2">
                               <div className="flex items-center justify-between">
-                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">MCP Connectors</span>
-                                <span className="text-[10px] font-bold text-purple-500">5 Active</span>
+                                <span className="text-[9px] font-bold text-gray-400 uppercase tracking-wider">MCP</span>
+                                <span className="text-[9px] font-bold text-purple-500">5 Active</span>
                               </div>
-
-                              <div className="space-y-3">
-                                <div>
-                                  <div className="text-[9px] font-bold text-gray-400 uppercase mb-1.5 flex items-center gap-1">
-                                    <div className="w-1 h-[1px] bg-gray-300 dark:bg-white/10 flex-1" />
-                                    <span>Global</span>
-                                    <div className="w-1 h-[1px] bg-gray-300 dark:bg-white/10 flex-1" />
+                              <div className="flex flex-col gap-0.5">
+                                {[
+                                  { name: 'GitHub', scope: 'GLB' },
+                                  { name: 'PostgreSQL', scope: 'PRJ' }
+                                ].map(mcp => (
+                                  <div key={mcp.name} className="flex items-center justify-between text-[11px] text-gray-600 dark:text-gray-300 px-1">
+                                    <div className="flex items-center gap-1.5">
+                                      <div className="w-1 h-1 rounded-full bg-purple-500" />
+                                      {mcp.name}
+                                    </div>
+                                    <span className="text-[8px] font-bold text-gray-400">{mcp.scope}</span>
                                   </div>
-                                  <div className="flex flex-col gap-1">
-                                    {[
-                                      { name: 'GitHub' },
-                                      { name: 'Slack' },
-                                      { name: 'Jira' }
-                                    ].map(mcp => (
-                                      <div key={mcp.name} className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-300 px-1">
-                                        <div className="flex items-center gap-2">
-                                          <div className="w-1 h-1 rounded-full bg-purple-500" />
-                                          {mcp.name}
-                                        </div>
-                                        <Chip size="sm" variant="soft" color="default" className="h-4 text-[8px] font-bold px-1 min-w-0">GLB</Chip>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
-
-                                <div>
-                                  <div className="text-[9px] font-bold text-gray-400 uppercase mb-1.5 flex items-center gap-1">
-                                    <div className="w-1 h-[1px] bg-gray-300 dark:bg-white/10 flex-1" />
-                                    <span>Project</span>
-                                    <div className="w-1 h-[1px] bg-gray-300 dark:bg-white/10 flex-1" />
-                                  </div>
-                                  <div className="flex flex-col gap-1">
-                                    {[
-                                      { name: 'Notion' },
-                                      { name: 'PostgreSQL' }
-                                    ].map(mcp => (
-                                      <div key={mcp.name} className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-300 px-1">
-                                        <div className="flex items-center gap-2">
-                                          <div className="w-1 h-1 rounded-full bg-purple-500" />
-                                          {mcp.name}
-                                        </div>
-                                        <Chip size="sm" variant="soft" color="accent" className="h-4 text-[8px] font-bold px-1 min-w-0">PRJ</Chip>
-                                      </div>
-                                    ))}
-                                  </div>
-                                </div>
+                                ))}
                               </div>
                             </div>
                           </div>
@@ -555,31 +485,26 @@ export default function App() {
                       {/* Usage */}
                       <PopoverRoot placement="top" showArrow>
                         <PopoverTriggerWrapper>
-                          <Button variant="light" className="h-auto min-w-0 p-1 flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-white/5 rounded-lg transition-colors group cursor-pointer">
-                            <Activity size={13} className="text-emerald-500" />
-                            <div className="w-10 h-1 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+                          <Button variant="light" className="h-auto min-w-0 p-1 flex items-center gap-1.5 hover:bg-gray-200 dark:hover:bg-white/5 rounded-md transition-colors group cursor-pointer">
+                            <Activity size={12} className="text-emerald-500" />
+                            <div className="w-8 h-1 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
                               <div className="h-full bg-emerald-500 w-[65%]" />
                             </div>
                           </Button>
                         </PopoverTriggerWrapper>
                         <PopoverContentWrapper className="bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 p-0 rounded-xl shadow-2xl">
-                          <div className="p-3 min-w-[220px]">
-                            <div className="flex flex-col gap-3">
+                          <div className="p-2.5 min-w-[200px]">
+                            <div className="flex flex-col gap-2">
                               <div className="flex items-center justify-between">
-                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Model Usage</span>
-                                <span className="text-[10px] font-bold text-emerald-500">65%</span>
+                                <span className="text-[9px] font-bold text-gray-400 uppercase tracking-wider">Usage</span>
+                                <span className="text-[9px] font-bold text-emerald-500">65%</span>
                               </div>
-                              <div className="space-y-1.5">
-                                <div className="w-full h-2 bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
-                                  <div className="h-full bg-emerald-500 w-[65%] shadow-[0_0_8px_rgba(16,185,129,0.4)]" />
-                                </div>
-                                <div className="flex justify-between text-[10px] text-gray-500">
-                                  <span>6,500 tokens</span>
-                                  <span>10,000 limit</span>
-                                </div>
+                              <div className="w-full h-1.5 bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
+                                <div className="h-full bg-emerald-500 w-[65%]" />
                               </div>
-                              <div className="pt-2 border-t border-gray-100 dark:border-white/5">
-                                <p className="text-[10px] text-gray-400 leading-tight">Usage resets in 14 hours. Upgrade for higher limits.</p>
+                              <div className="flex justify-between text-[9px] text-gray-500">
+                                <span>6.5k tokens</span>
+                                <span>10k limit</span>
                               </div>
                             </div>
                           </div>
@@ -591,17 +516,15 @@ export default function App() {
                 <Button 
                   isIconOnly 
                   size="sm" 
-                  variant="primary" 
-                  className="h-8 w-8 min-w-0 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all active:scale-95 shadow-md shadow-blue-500/20 flex items-center justify-center"
+                  className="h-7 w-7 min-w-0 rounded-md bg-blue-600 hover:bg-blue-500 text-white transition-all active:scale-95 shadow-sm flex items-center justify-center"
                   onClick={handleSendMessage}
                 >
-                  <Send size={16} />
+                  <Send size={14} />
                 </Button>
               </div>
             </div>
-
-            <div className="flex items-center justify-end px-2">
-              <div className="text-[10px] text-gray-400 dark:text-gray-600 font-bold uppercase tracking-widest">
+            <div className="flex items-center justify-end px-1">
+              <div className="text-[9px] text-gray-400 dark:text-gray-600 font-bold uppercase tracking-widest">
                 Codex AI v2.4
               </div>
             </div>
@@ -614,31 +537,31 @@ export default function App() {
         {rightPanelOpen && (
           <motion.div 
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 280, opacity: 1 }}
+            animate={{ width: 240, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="flex-shrink-0 bg-gray-50/50 dark:bg-[#111111] overflow-hidden flex flex-col border-l border-gray-200 dark:border-white/5 transition-colors duration-300"
           >
-            <div className="h-14 flex items-center justify-between px-5 border-b border-gray-100 dark:border-white/5">
+            <div className="h-12 flex items-center justify-between px-4 border-b border-gray-100 dark:border-white/5">
               <span className="text-sm font-bold text-gray-800 dark:text-gray-200">Files</span>
               <Button isIconOnly size="sm" variant="ghost" className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white min-w-0 w-8 h-8 rounded-lg" onClick={() => setRightPanelOpen(false)}>
-                <ChevronRight size={18} />
+                <ChevronRight size={16} />
               </Button>
             </div>
-            <ScrollShadow className="flex-1 p-4">
-              <div className="flex flex-col gap-1">
+            <ScrollShadow className="flex-1 p-2">
+              <div className="flex flex-col gap-0.5">
                 {mockFiles.map((file, idx) => (
                   <div key={idx} className="flex flex-col">
-                    <div className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 dark:hover:bg-white/5 rounded-xl cursor-pointer group transition-colors">
-                      {file.type === 'folder' ? <Folder size={16} className="text-blue-500/70 dark:text-blue-400/80" /> : <FileCode size={16} className="text-gray-400 dark:text-gray-500" />}
-                      <span className="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">{file.name}</span>
+                    <div className="flex items-center gap-2 px-2.5 py-1.5 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg cursor-pointer group transition-colors">
+                      {file.type === 'folder' ? <Folder size={14} className="text-blue-500/70 dark:text-blue-400/80" /> : <FileCode size={14} className="text-gray-400 dark:text-gray-500" />}
+                      <span className="text-[13px] font-medium text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">{file.name}</span>
                     </div>
                     {file.children && (
-                      <div className="pl-6 flex flex-col gap-1 mt-1">
+                      <div className="pl-5 flex flex-col gap-0.5 mt-0.5">
                         {file.children.map((child, cIdx) => (
-                          <div key={cIdx} className="flex items-center gap-2 px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-white/5 rounded-xl cursor-pointer group transition-colors">
-                            <FileCode size={14} className="text-gray-400 dark:text-gray-500" />
-                            <span className="text-sm font-medium text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">{child.name}</span>
+                          <div key={cIdx} className="flex items-center gap-2 px-2.5 py-1.5 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg cursor-pointer group transition-colors">
+                            <FileCode size={12} className="text-gray-400 dark:text-gray-500" />
+                            <span className="text-[12px] font-medium text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">{child.name}</span>
                           </div>
                         ))}
                       </div>
